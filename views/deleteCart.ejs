@@ -1,0 +1,37 @@
+<?php
+  include './config.php';
+   session_start();
+
+  if(!isset($_SESSION['userEmail']))
+  {
+      header("Location: sign-up.php");
+  }else{
+      if($_GET['id'])
+      {
+          $id = $_GET['id'];
+          $pid = $_POST['productId'];
+          $userEmail = $_SESSION['userEmail'];
+         
+          
+          $delete = "DELETE  FROM `carts` WHERE id = '$id'";
+          $result = mysqli_query($con,$delete);
+          if($result){
+               ?>
+                <script>
+                window.location.href="./cart.php"
+                </script>
+                
+              <?php
+          }else{
+              ?>
+                <script>alert("Items not Deleted");
+                 window.location.href="./product.php"
+                </script>
+              <?php
+          }
+      }else{
+           header("Location: sign-up.php");
+      }
+      
+  }
+?>

@@ -1,0 +1,593 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+        integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/contact.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <style>
+        
+
+/*--------------------------------------------------------------
+# Contact
+--------------------------------------------------------------*/
+.contact .info {
+  padding: 30px;
+  width: 100%;
+  background: #fff;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+}
+.contact .info i {
+  font-size: 20px;
+  color: #fff;
+  float: left;
+  width: 44px;
+  height: 44px;
+  background: darkblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  transition: all 0.3s ease-in-out;
+}
+.contact .info h4 {
+  padding: 0 0 0 60px;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #36343a;
+}
+.contact .info p {
+  padding: 0 0 0 60px;
+  margin-bottom: 0;
+  font-size: 14px;
+  color: #686470;
+}
+.contact .php-email-form {
+  width: 100%;
+  padding: 30px;
+  background: #fff;
+  box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.12);
+}
+.contact .php-email-form .form-group {
+  padding-bottom: 8px;
+}
+.contact .php-email-form .error-message {
+  display: none;
+  color: #fff;
+  background: #ed3c0d;
+  text-align: left;
+  padding: 15px;
+  font-weight: 600;
+}
+.contact .php-email-form .error-message br + br {
+  margin-top: 25px;
+}
+.contact .php-email-form .sent-message {
+  display: none;
+  color: #fff;
+  background: #18d26e;
+  text-align: center;
+  padding: 15px;
+  font-weight: 600;
+}
+.contact .php-email-form .loading {
+  display: none;
+  background: #fff;
+  text-align: center;
+  padding: 15px;
+}
+.contact .php-email-form .loading:before {
+  content: "";
+  display: inline-block;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  margin: 0 10px -6px 0;
+  border: 3px solid #18d26e;
+  border-top-color: #eee;
+  -webkit-animation: animate-loading 1s linear infinite;
+  animation: animate-loading 1s linear infinite;
+}
+.contact .php-email-form input, .contact .php-email-form textarea {
+  border-radius: 0;
+  box-shadow: none;
+  font-size: 14px;
+}
+.contact .php-email-form input {
+  height: 44px;
+}
+.contact .php-email-form textarea {
+  padding: 10px 12px;
+}
+.contact .php-email-form button[type=submit] {
+  background: #009970;
+  border: 0;
+  padding: 10px 30px;
+  color: #fff;
+  transition: 0.4s;
+  border-radius: 50px;
+}
+.contact .php-email-form button[type=submit]:hover {
+  background: #00805d;
+}
+@-webkit-keyframes animate-loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes animate-loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+    </style>
+<style>
+    footer{
+  background: #05151f;
+  color: white;
+  padding-top: 3rem;
+}
+
+footer .image img{
+  width: 90px;
+}
+
+footer .image p{
+  font-weight: 600;
+}
+
+footer .content{
+  font-size: .8rem;
+  padding: 0;
+  letter-spacing: 1px;
+}
+
+footer .col-sm-12,
+footer .col-lg-3,
+footer .col-md-6{
+  margin-top: 5rem;
+}
+
+footer h5{
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #059589;
+  padding-bottom: 1rem;
+  width: 50%;
+}
+
+footer p{
+  color: #CECBCB;
+  text-transform: capitalize;
+}
+
+footer .footer-child-4 p:nth-child(2){
+  margin-bottom: 0.50rem;
+}
+
+footer .footer-child-4 p:nth-child(3){
+  margin-bottom: 0.80rem;
+  font-size: 13px;
+}
+
+footer .footer-child-4 p:nth-child(6){
+  text-transform: lowercase;
+}
+
+footer .footer-child-4 p i{
+  margin-right: 0.50rem;
+}
+
+footer .copyright{
+  font-size: 14px;
+}
+
+footer .footer-child-3 a{
+  text-decoration: none;
+  color: #CECBCB;
+}
+
+footer .footer-child-3 a i{
+  margin-bottom: 1rem;
+  margin-right: 0.30rem;
+}
+
+footer .footer-child-3 .app-box{
+  margin-top: 2rem;
+}
+
+footer .footer-child-3 .app-box h5{
+  font-family: -webkit-pictograph;
+  border: none;
+  font-size: 17px;
+  width: 100%;
+}
+
+footer .footer-child-3 .app-box img{
+  width: 50%;
+  border: 2px solid black;
+}
+@media (max-width: 590px){
+  footer .footer-child-3 .app-box{
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+  }
+  .col-3 {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+}
+@media (max-width: 575px){
+    .footer-child-1,
+    .footer-child-2,
+    .footer-child-3,
+    .footer-child-4{
+        margin-left: 2rem;
+        margin-bottom: 1.5rem;
+    }
+}  
+</style>
+    <title>Contact us</title>
+</head>
+
+<body>
+
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container">
+        <a class="navbar-brand" href="#"><img src="./images/logo.png"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+          <ul class="navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="contact">Contact Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="product">Products</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+</header>
+
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="row">
+         
+          <div class="col-lg-12" data-aos="fade-up" data-aos-delay="100">
+           
+            <div class="info mt-4">
+              <i class="fa fa-globe"></i>
+              <h4>Location:</h4>
+              <p>A108 Adam Street, New York, NY 535022</p>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 mt-4">
+                <div class="info">
+                  <i class="fa fa-envelope"></i>
+                  <h4>Email:</h4>
+                  <p>info@example.com</p>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="info w-100 mt-4">
+                  <i class="fa fa-phone"></i>
+                  <h4>Call:</h4>
+                  <p>+1 5589 55488 55s</p>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
+    <section class="section-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-sm-12">
+                    <div class="container-fluid">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6446158.751982865!2d-83.91422505324512!3d37.91784952862125!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x884cd670bdbcb2cd%3A0xc04e4149b746a695!2sVirginia%2C%20USA!5e0!3m2!1sen!2sin!4v1647176220869!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-12">
+                    <div class="container" style="box-shadow:0px 2px 15px rgb(0 0 0 / 10%);">
+                        <h2>Get in touch</h2>
+                        <form action="">
+                            <div class="input-box">
+                                <input type="text" placeholder="Name">
+                                <input type="text" placeholder="Phone">
+                                <input type="email" placeholder="Email">
+                             <div class="row">
+                                <div class="col-lg-6">
+                 <select name="time_zone" style="padding:6px;height:37px;width: 240px;" required>
+                      <option value="" disabled selected hidden>TimeZone</option>
+                      <option value="Hawaii">(GMT-10:00) Hawaii</option>
+        <option value="Alaska">(GMT-09:00) Alaska</option>
+        <option value="Pacific Time (US &amp; Canada)">(GMT-08:00) Pacific Time (US &amp; Canada)</option>
+        <option value="Arizona">(GMT-07:00) Arizona</option>
+        <option value="Mountain Time (US &amp; Canada)">(GMT-07:00) Mountain Time (US &amp; Canada)</option>
+        <option value="Central Time (US &amp; Canada)" selected="selected">(GMT-06:00) Central Time (US &amp; Canada)</option>
+        <option value="Eastern Time (US &amp; Canada)">(GMT-05:00) Eastern Time (US &amp; Canada)</option>
+        <option value="Indiana (East)">(GMT-05:00) Indiana (East)</option><option value="" disabled="disabled">-------------</option>
+        <option value="International Date Line West">(GMT-11:00) International Date Line West</option>
+        <option value="Midway Island">(GMT-11:00) Midway Island</option>
+        <option value="Samoa">(GMT-11:00) Samoa</option>
+        <option value="Tijuana">(GMT-08:00) Tijuana</option>
+        <option value="Chihuahua">(GMT-07:00) Chihuahua</option>
+        <option value="Mazatlan">(GMT-07:00) Mazatlan</option>
+        <option value="Central America">(GMT-06:00) Central America</option>
+        <option value="Guadalajara">(GMT-06:00) Guadalajara</option>
+        <option value="Mexico City">(GMT-06:00) Mexico City</option>
+        <option value="Monterrey">(GMT-06:00) Monterrey</option>
+        <option value="Saskatchewan">(GMT-06:00) Saskatchewan</option>
+        <option value="Bogota">(GMT-05:00) Bogota</option>
+        <option value="Lima">(GMT-05:00) Lima</option>
+        <option value="Quito">(GMT-05:00) Quito</option>
+        <option value="Caracas">(GMT-04:30) Caracas</option>
+        <option value="Atlantic Time (Canada)">(GMT-04:00) Atlantic Time (Canada)</option>
+        <option value="La Paz">(GMT-04:00) La Paz</option>
+        <option value="Santiago">(GMT-04:00) Santiago</option>
+        <option value="Newfoundland">(GMT-03:30) Newfoundland</option>
+        <option value="Brasilia">(GMT-03:00) Brasilia</option>
+        <option value="Buenos Aires">(GMT-03:00) Buenos Aires</option>
+        <option value="Georgetown">(GMT-03:00) Georgetown</option>
+        <option value="Greenland">(GMT-03:00) Greenland</option>
+        <option value="Mid-Atlantic">(GMT-02:00) Mid-Atlantic</option>
+        <option value="Azores">(GMT-01:00) Azores</option>
+        <option value="Cape Verde Is.">(GMT-01:00) Cape Verde Is.</option>
+        <option value="Casablanca">(GMT) Casablanca</option>
+        <option value="Dublin">(GMT) Dublin</option>
+        <option value="Edinburgh">(GMT) Edinburgh</option>
+        <option value="Lisbon">(GMT) Lisbon</option>
+        <option value="London">(GMT) London</option>
+        <option value="Monrovia">(GMT) Monrovia</option>
+        <option value="Amsterdam">(GMT+01:00) Amsterdam</option>
+        <option value="Belgrade">(GMT+01:00) Belgrade</option>
+        <option value="Berlin">(GMT+01:00) Berlin</option>
+        <option value="Bern">(GMT+01:00) Bern</option>
+        <option value="Bratislava">(GMT+01:00) Bratislava</option>
+        <option value="Brussels">(GMT+01:00) Brussels</option>
+        <option value="Budapest">(GMT+01:00) Budapest</option>
+        <option value="Copenhagen">(GMT+01:00) Copenhagen</option>
+        <option value="Ljubljana">(GMT+01:00) Ljubljana</option>
+        <option value="Madrid">(GMT+01:00) Madrid</option>
+        <option value="Paris">(GMT+01:00) Paris</option>
+        <option value="Prague">(GMT+01:00) Prague</option>
+        <option value="Rome">(GMT+01:00) Rome</option>
+        <option value="Sarajevo">(GMT+01:00) Sarajevo</option>
+        <option value="Skopje">(GMT+01:00) Skopje</option>
+        <option value="Stockholm">(GMT+01:00) Stockholm</option>
+        <option value="Vienna">(GMT+01:00) Vienna</option>
+        <option value="Warsaw">(GMT+01:00) Warsaw</option>
+        <option value="West Central Africa">(GMT+01:00) West Central Africa</option>
+        <option value="Zagreb">(GMT+01:00) Zagreb</option>
+        <option value="Athens">(GMT+02:00) Athens</option>
+        <option value="Bucharest">(GMT+02:00) Bucharest</option>
+        <option value="Cairo">(GMT+02:00) Cairo</option>
+        <option value="Harare">(GMT+02:00) Harare</option>
+        <option value="Helsinki">(GMT+02:00) Helsinki</option>
+        <option value="Istanbul">(GMT+02:00) Istanbul</option>
+        <option value="Jerusalem">(GMT+02:00) Jerusalem</option>
+        <option value="Kyiv">(GMT+02:00) Kyiv</option>
+        <option value="Minsk">(GMT+02:00) Minsk</option>
+        <option value="Pretoria">(GMT+02:00) Pretoria</option>
+        <option value="Riga">(GMT+02:00) Riga</option>
+        <option value="Sofia">(GMT+02:00) Sofia</option>
+        <option value="Tallinn">(GMT+02:00) Tallinn</option>
+        <option value="Vilnius">(GMT+02:00) Vilnius</option>
+        <option value="Baghdad">(GMT+03:00) Baghdad</option>
+        <option value="Kuwait">(GMT+03:00) Kuwait</option>
+        <option value="Moscow">(GMT+03:00) Moscow</option>
+        <option value="Nairobi">(GMT+03:00) Nairobi</option>
+        <option value="Riyadh">(GMT+03:00) Riyadh</option>
+        <option value="St. Petersburg">(GMT+03:00) St. Petersburg</option>
+        <option value="Volgograd">(GMT+03:00) Volgograd</option>
+        <option value="Tehran">(GMT+03:30) Tehran</option>
+        <option value="Abu Dhabi">(GMT+04:00) Abu Dhabi</option>
+        <option value="Baku">(GMT+04:00) Baku</option>
+        <option value="Muscat">(GMT+04:00) Muscat</option>
+        <option value="Tbilisi">(GMT+04:00) Tbilisi</option>
+        <option value="Yerevan">(GMT+04:00) Yerevan</option>
+        <option value="Kabul">(GMT+04:30) Kabul</option>
+        <option value="Ekaterinburg">(GMT+05:00) Ekaterinburg</option>
+        <option value="Islamabad">(GMT+05:00) Islamabad</option>
+        <option value="Karachi">(GMT+05:00) Karachi</option>
+        <option value="Tashkent">(GMT+05:00) Tashkent</option>
+        <option value="Chennai">(GMT+05:30) Chennai</option>
+        <option value="Kolkata">(GMT+05:30) Kolkata</option>
+        <option value="Mumbai">(GMT+05:30) Mumbai</option>
+        <option value="New Delhi">(GMT+05:30) New Delhi</option>
+        <option value="Kathmandu">(GMT+05:45) Kathmandu</option>
+        <option value="Almaty">(GMT+06:00) Almaty</option>
+        <option value="Astana">(GMT+06:00) Astana</option>
+        <option value="Dhaka">(GMT+06:00) Dhaka</option>
+        <option value="Novosibirsk">(GMT+06:00) Novosibirsk</option>
+        <option value="Sri Jayawardenepura">(GMT+06:00) Sri Jayawardenepura</option>
+        <option value="Rangoon">(GMT+06:30) Rangoon</option>
+        <option value="Bangkok">(GMT+07:00) Bangkok</option>
+        <option value="Hanoi">(GMT+07:00) Hanoi</option>
+        <option value="Jakarta">(GMT+07:00) Jakarta</option>
+        <option value="Krasnoyarsk">(GMT+07:00) Krasnoyarsk</option>
+        <option value="Beijing">(GMT+08:00) Beijing</option>
+        <option value="Chongqing">(GMT+08:00) Chongqing</option>
+        <option value="Hong Kong">(GMT+08:00) Hong Kong</option>
+        <option value="Irkutsk">(GMT+08:00) Irkutsk</option>
+        <option value="Kuala Lumpur">(GMT+08:00) Kuala Lumpur</option>
+        <option value="Perth">(GMT+08:00) Perth</option>
+        <option value="Singapore">(GMT+08:00) Singapore</option>
+        <option value="Taipei">(GMT+08:00) Taipei</option>
+        <option value="Ulaan Bataar">(GMT+08:00) Ulaan Bataar</option>
+        <option value="Urumqi">(GMT+08:00) Urumqi</option>
+        <option value="Osaka">(GMT+09:00) Osaka</option>
+        <option value="Sapporo">(GMT+09:00) Sapporo</option>
+        <option value="Seoul">(GMT+09:00) Seoul</option>
+        <option value="Tokyo">(GMT+09:00) Tokyo</option>
+        <option value="Yakutsk">(GMT+09:00) Yakutsk</option>
+        <option value="Adelaide">(GMT+09:30) Adelaide</option>
+        <option value="Darwin">(GMT+09:30) Darwin</option>
+        <option value="Brisbane">(GMT+10:00) Brisbane</option>
+        <option value="Canberra">(GMT+10:00) Canberra</option>
+        <option value="Guam">(GMT+10:00) Guam</option>
+        <option value="Hobart">(GMT+10:00) Hobart</option>
+        <option value="Melbourne">(GMT+10:00) Melbourne</option>
+        <option value="Port Moresby">(GMT+10:00) Port Moresby</option>
+        <option value="Sydney">(GMT+10:00) Sydney</option>
+        <option value="Vladivostok">(GMT+10:00) Vladivostok</option>
+        <option value="Magadan">(GMT+11:00) Magadan</option>
+        <option value="New Caledonia">(GMT+11:00) New Caledonia</option>
+        <option value="Solomon Is.">(GMT+11:00) Solomon Is.</option>
+        <option value="Auckland">(GMT+12:00) Auckland</option>
+        <option value="Fiji">(GMT+12:00) Fiji</option>
+        <option value="Kamchatka">(GMT+12:00) Kamchatka</option>
+        <option value="Marshall Is.">(GMT+12:00) Marshall Is.</option>
+        <option value="Wellington">(GMT+12:00) Wellington</option>
+        <option value="Nuku'alofa">(GMT+13:00) Nuku'alofa</option>
+                     
+                    </select>
+                
+    </div>
+    <div class="col-lg-6">
+                       <select name="country" id="" style="padding:6px;height:37px;width: 240px;">
+                           <option value="" disabled selected hidden>Country</option>
+                      <option value="United State">United State</option>
+                      <option value="India">India</option>
+                      
+                      <option value="Canada">Canada</option>
+                      <option value="Japan">Japan</option>
+                      <option value="Australia">Australia</option>
+                      <option value="Germany">Germany</option>
+                      <option value="New Zealand">New Zealand</option>
+                      <option value="United Kingdom">United Kingdom</option>
+                    </select>
+</div>
+</div>
+
+<div class="col-lg-12">
+    <select name="country" id="" style="padding:6px;height:37px;width: 400px;margin-top: 10px;margin-bottom: 10px;">
+                           <option value="" disabled selected hidden>Intentions?</option>
+        
+                      <option value="v1">I want to get a federal registration</option>
+                      <option value="v2">I want to get multiple federal registrations</option>
+                      <option value="v3">I want to get state registrations</option>
+                      <option value="v4">I want to get both federal and state registration</option>
+                      <option value="v5">I want my product to get tested for Toxicology, Chemistry and efficacy testing</option>
+                      <option value="v6">I want my dossier copy to get it reviewed</option>
+                      <option value=""v7>I want to make a Material Safety data sheet for my product</option>
+                      <option value="v8">I want you to sell my product around the world</option>
+                      <option value="v9">I want you to sell my product just in the United States</option>
+                    
+                    </select>
+</div>
+                                <textarea name="" id="" cols="30" rows="10" placeholder="Message"></textarea>
+                            </div>
+                            <div class="button">
+                                <button class="btn">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-3">
+          <div class="image">
+             <img src="./images/logo.png" alt=""> 
+            <p>Evolving World Ventures LLC.</p>
+          </div>
+          <div class="content">
+            <p>Repellat fugiat adipisci nemo illum nesciunt voluptas repellendus. In architecto rerum rerum temporibus.Repellat fugiat adipisci nemo illum nesciunt voluptas repellendus.</p>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="footer-child-1">
+            <h5>Quick Links</h5>
+            <p>Home</p>
+            <p>About Us</p>
+            <p>Contact</p>
+            <p>Products</p>
+          </div>
+        </div>
+        <div class="col-3 ">
+          <div class="footer-child-3">
+            <h5>Follow Us</h5>
+            <div class="icons d-flex flex-column">
+              <a href="#"><i class="fab fa-facebook-f"></i>
+                <span>facebook</span></a>
+              <a href="#"><i class="fab fa-instagram"></i>
+                <span>instagram</span></a>
+              <a href="#"><i class="fab fa-twitter"></i>
+                <span>twitter</span></a>
+              <a href="#"><i class="fab fa-google"></i>
+                <span>google</span></a>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="footer-child-4">
+            <h5>Contact us</h5>
+            <p><i class="fas fa-map-marker-alt"></i>ABC </p>
+            <p>lorem loseum lorem losuem</p>
+            <p><i class="fas fa-mobile-alt"></i>123456789</p>
+            <!--<p><i class="fab fa-whatsapp"></i>8905-356-957</p>-->
+            <p><i class="fas fa-envelope"></i>example@gmail.com </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="footer-legal">
+      <div class="container">
+        <div class="copyright d-flex justify-content-center">
+          &copy; Copyright <strong><span> Evolving World Ventures LLC</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits d-flex justify-content-center">
+          Designed by <a href="https://techiweb.in/" style="text-decoration: none;">Techiweb</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+    <script src="index.js"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+    -->
+</body>
+
+</html>

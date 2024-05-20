@@ -1,0 +1,158 @@
+<?php
+session_start();
+
+include 'config.php';
+
+
+if(isset($_SESSION['pid']) && isset($_SESSION['p_qty']))
+{
+    
+    if(!isset($_POST['order_book']))
+    {
+        header("Location: ../index.php");
+    }else{
+        
+    
+    
+ $name = $_POST['fname'];
+$company_name = $_POST['cn'];
+$house_add = $_POST['houseadd'];
+$town = $_POST['town'];
+$state = $_POST['state'];
+$postcode = $_POST['postcode'];
+$phone = $_POST['phone'];
+$email = $_POST['email'];
+$pid = $_SESSION['pid'];
+$product_qty = $_SESSION['p_qty'];
+$type = "product";
+$status = "pending";
+
+
+ $select_product = "SELECT * FROM `products` WHERE `pid` = $pid";
+ $select_result = mysqli_query($conn,$select_product);
+ $product_data = mysqli_fetch_array($select_result);
+ 
+  $product_name = $product_data['name']; 
+  $product_price = $product_data['new_price']; 
+  $product_colour = $product_data['colour']; 
+
+// $_SESSION['name'] = $name;
+// $_SESSION['company_name'] = $company_name;
+// $_SESSION['house_add'] = $house_add;
+// $_SESSION['town'] = $town;
+// $_SESSION['state'] = $state;
+// $_SESSION['postcode'] = $postcode;
+// $_SESSION['phone'] = $phone;
+// $_SESSION['email'] = $email;
+// $_SESSION['product_name'] = $product_name;
+// $_SESSION['product_price'] = $product_price;
+// $_SESSION['product_qty'] = $product_qty;
+
+
+
+
+
+
+
+
+$sql = "INSERT INTO `ordered_products`(`name`, `company_name`, `address`, `town`, `state`, `postcode`, `phone`, `email`, `pid`,  `product_qty`, `type`, `status`) VALUES ('$name','$company_name','$house_add','$town','$state','$postcode','$phone','$email','$pid','$product_qty','$type','$status')";
+
+// include "phpmailer/phpmail.php";
+
+$result=mysqli_query($conn, $sql);
+
+if($result){
+    
+    // email send to the owner 
+        $to = "pesto67control@gmail.com"; // admin email
+        $subject = "New Order";
+        $message = " <b>Customer details</b> <br><br>
+
+                        Name : $name <br>
+                        Company Name : $company_name <br>
+                        House Address : $house_add <br>
+                        Town : $town  <br>
+                        State : $state <br>
+                        PostCode : $postcode <br>
+                        PhoneNo : $phone <br>
+                        Email : $email <br><br>
+                        
+                        <b>Product Details</b><br><br>
+                        
+                        Product ID : $pid <br>
+                        Product Name : $product_name <br>
+                        Product Price : $product_price ₹ <br>
+                        Product Colour : $product_colour <br>
+                        Product Qty : $product_qty <br><br>
+              
+                        ";
+        $headers = "From: pesto67control@gmail.com\r\n";  // company email
+        $headers .= "Reply-To: pesto67control@gmail.com\r\n";
+        $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+        
+        if (mail($to, $subject, $message, $headers)) {
+          
+                              // email send to the customer 
+                                $to = $email;
+                                $subject = "Order Placed";
+                                $message = " <b>Billing details</b> <br><br>
+                        
+                                                Name : $name <br>
+                                                Company Name : $company_name <br>
+                                                House Address : $house_add <br>
+                                                Town : $town  <br>
+                                                State : $state <br>
+                                                PostCode : $postcode <br>
+                                                PhoneNo : $phone <br>
+                                                Email : $email <br><br>
+                                                
+                                                <b>Product Details</b><br><br>
+                                                
+                                             
+                                                Product Name : $product_name <br>
+                                                Product Name : $product_name <br>
+                                                Product Price : $product_price ₹ <br>
+                                                Product Colour : $product_colour <br>
+                                                Product Qty : $product_qty <br><br>
+                                      
+                                                ";
+                                $headers = "From: pesto67control@gmail.com\r\n";   // company email 
+                                $headers .= "Reply-To: pesto67control@gmail.com\r\n";
+                                $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+                                
+                                if (mail($to, $subject, $message, $headers)) {
+                                   ?>
+                                       <script>
+                                          alert("Order Done");
+                                          window.location.href="../index.php";
+                                       </script>
+                                   <?php
+                                } else {
+                                    echo "Email sending failed.";
+                                }
+              
+              
+              
+              
+              
+        
+        } else {
+            echo "Email sending failed.";
+        }
+
+    }else{
+      ?>
+               <script>
+                  alert("Try after some time");
+                  window.location.href="../index.php";
+               </script>
+           <?php
+    }
+
+}
+    
+}else{
+    header("Location: ../index.php");
+}
+
+

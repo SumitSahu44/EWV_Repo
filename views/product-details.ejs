@@ -1,0 +1,247 @@
+<?php
+include 'config.php';
+ session_start();
+ 
+ 
+ if(!isset($_GET['pid']))
+ {
+      header("Location: ./index.php");
+ }else{
+  
+     $pid = $_GET['pid'];
+         $_SESSION['pid'] = $pid;
+     
+     $select = "SELECT * FROM `products` WHERE `pid` = '$pid'";
+     $result = mysqli_query($con,$select);
+     $data = mysqli_fetch_array($result);
+     $img_name = $data['img'];
+     $img = './images/'.$img_name;
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Product Details</title>
+
+
+ <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+    integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="style.css">
+    
+    
+
+<link rel="stylesheet" href="product-details.css">
+<link rel="stylesheet" href="responsivenav.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin
+    ="anonymous" referrerpolicy="no-referrer" />
+    
+    
+    
+   
+<script>
+    const imgs = document.querySelectorAll('.img-select a');
+const imgBtns = [...imgs];
+let imgId = 1;
+
+imgBtns.forEach((imgItem) => {
+    imgItem.addEventListener('click', (event) => {
+        event.preventDefault();
+        imgId = imgItem.dataset.id;
+        slideImage();
+    });
+});
+
+function slideImage(){
+    const displayWidth = document.querySelector('.img-showcase img:first-child').clientWidth;
+
+    document.querySelector('.img-showcase').style.transform = `translateX(${- (imgId - 1) * displayWidth}px)`;
+}
+
+window.addEventListener('resize', slideImage);
+</script>
+<style>
+  .purchase-info .btn:last-of-type {
+    font-size: 20px;
+    padding: 15px 20px;
+    width: unset;
+    background: #f64749;
+}
+  .logo img{
+  width:250px;
+  height:80px;
+}
+@media screen and (max-width: 600px){
+.logo img{
+  width:180px;
+  height:80px;
+}
+.purchase-info .btn:last-of-type {
+    font-size: 25px;
+    padding: 20px 30px;
+    width: unset;
+    background: #f64749;
+}
+}
+</style>
+
+</head>
+
+<body>
+
+
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light position-fixed">
+      <div class="container">
+        <a class="navbar-brand" href="#"><img src="./images/logo.png"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+          <ul class="navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="product.php">Products</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="cart.php"><i class="fa fa-shopping-cart" aria-hidden="true"><?php echo $cartItems ?></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+</header>
+
+
+<div class = "card-wrapper">
+  <div class = "card">
+    <!-- card left -->
+    <div class = "product-imgs">
+      <div class = "img-display">
+        <div class = "img-showcase">
+          <img src = "<?php echo $img ?>" alt = "Product image">
+          <!--<img src = "./products_img/item2.jpg" alt = "shoe image">-->
+          <!--<img src = "./products_img/item3.jpg" alt = "shoe image">-->
+          <!--<img src = "./products_img/item4.jpg" alt = "shoe image">-->
+        </div>
+      </div>
+      <!--<div class = "img-select">-->
+      <!--  <div class = "img-item">-->
+      <!--    <a href = "#" data-id = "1">-->
+      <!--      <img src = "./products_img/item1.jpg" alt = "shoe image">-->
+      <!--    </a>-->
+      <!--  </div>-->
+      <!--  <div class = "img-item">-->
+      <!--    <a href = "#" data-id = "2">-->
+      <!--      <img src = "./products_img/item2.jpg" alt = "shoe image">-->
+      <!--    </a>-->
+      <!--  </div>-->
+      <!--  <div class = "img-item">-->
+      <!--    <a href = "#" data-id = "3">-->
+      <!--      <img src = "./products_img/item3.jpg" alt = "shoe image">-->
+      <!--    </a>-->
+      <!--  </div>-->
+      <!--  <div class = "img-item">-->
+      <!--    <a href = "#" data-id = "4">-->
+      <!--      <img src = "./products_img/item4.jpg" alt = "shoe image">-->
+      <!--    </a>-->
+      <!--  </div>-->
+      <!--</div>-->
+    </div>
+    <!-- card right -->
+    <div class = "product-content">
+      <h2 class = "product-title"><?php echo $data['Name']; ?></h2>
+      <a href = "#" class = "product-link">short description</a>
+      <div class = "product-rating">
+        <i class = "fa fa-star"></i>
+        <i class = "fa fa-star"></i>
+        <i class = "fa fa-star"></i>
+        <i class = "fa fa-star"></i>
+        <i class = "fa fa-star-half"></i>
+        <span>4.7(21)</span>
+      </div>
+
+      <div class = "product-price">
+        <p class = "last-price">Old Price: <span>$<?php echo 999; ?></span></p>
+        <p class = "new-price">New Price: <span> $<?php echo $data['Price']; ?></span></p>
+      </div>
+
+      <div class = "product-detail">
+        <h2>about this item: </h2>
+        <p><?php echo $data['description']; ?></p>
+        <!--<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, perferendis eius. Dignissimos, labore suscipit. Unde.</p>-->
+        <ul>
+          <li>Color: <span><?php echo $data['colour']; ?></span></li>
+          <li>Available: <span>in stock</span></li>
+          <li>Category: <span>fogging</span></li>
+          <li>Shipping Area: <span>All over the India</span></li>
+          <li>Shipping Fee: <span>Free</span></li>
+        </ul>
+      </div>
+
+      <div class = "purchase-info">
+      
+  
+  <!--get product data-->
+    <form method="post" action="additem.php">
+        
+          <!--<input type = "number" name="product_qty" min = "0" value = "1">-->
+        
+        
+        
+      <input type="hidden" value="faggin_machine" name="product_name">
+      <input type="hidden" value="420" name="product_price">
+      <input type="hidden" value="<?php echo $pid ?>" name="productId">
+      
+      
+        <button type = "submit" name="buy" class = "btn">
+          Add to Cart <i class = "fa fa-shopping-cart"></i>
+        </button>
+    </form>
+  
+    
+        <!--<button type = "button" class = "btn">Compare</button>-->
+      </div>
+
+      <!--<div class = "social-links">-->
+      <!--  <p>Share At: </p>-->
+      <!--  <a href = "#">-->
+      <!--    <i class = "fab fa-facebook-f"></i>-->
+      <!--  </a>-->
+      <!--  <a href = "#">-->
+      <!--    <i class = "fab fa-twitter"></i>-->
+      <!--  </a>-->
+      <!--  <a href = "#">-->
+      <!--    <i class = "fab fa-instagram"></i>-->
+      <!--  </a>-->
+      <!--  <a href = "#">-->
+      <!--    <i class = "fab fa-whatsapp"></i>-->
+      <!--  </a>-->
+      <!--  <a href = "#">-->
+      <!--    <i class = "fab fa-pinterest"></i>-->
+      <!--  </a>-->
+      <!--</div>-->
+    </div>
+  </div>
+</div>
+</body>
+
+</html>
+<?php
+
+ }
+ 
+ ?>

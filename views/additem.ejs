@@ -1,0 +1,36 @@
+<?php
+  include './config.php';
+   session_start();
+
+  if(!isset($_SESSION['userEmail']))
+  {
+      header("Location: sign-up.php");
+  }else{
+      if(isset($_POST['productId']))
+      {
+          $pid = $_POST['productId'];
+          $userEmail = $_SESSION['userEmail'];
+         
+          
+          $insert = "INSERT INTO `carts`(`pid`, `user_email`) VALUES('$pid', '$userEmail')";
+          $result = mysqli_query($con,$insert);
+          if($result){
+               ?>
+                <script>
+                window.location.href="./cart.php"
+                </script>
+                
+              <?php
+          }else{
+              ?>
+                <script>alert("Items not added");
+                 window.location.href="./product.php"
+                </script>
+              <?php
+          }
+      }else{
+           header("Location: sign-up.php");
+      }
+      
+  }
+?>
