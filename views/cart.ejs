@@ -102,34 +102,46 @@ body{
                     <th class="text-center align-middle py-3 px-0" style="width: 40px;"><a href="#" class="shop-tooltip float-none text-light" title="" data-original-title="Clear cart"><i class="ino ion-md-trash"></i></a></th>
                   </tr>
                 </thead>
-                <tbody>
-                    
-                                    <tr>
-                                       <td class="p-4">
-                                          <div class="media align-items-center">
-                                            <img src="./images/pro.jpg" class="d-block ui-w-40 ui-bordered mr-4" alt="">
-                                            <div class="media-body">
-                                              <a href="#" class="d-block text-dark">Produt Name</a>
-                                              <small>
-                                                <span class="text-muted">Color:</span>
-                                                <span class="ui-product-color ui-product-color-sm align-text-bottom" style="background:#e81e2c;"></span> &nbsp;
-                                                <span class="text-muted">Size: </span> EU 37 &nbsp;
-                                                <span class="text-muted">Ships from: </span> China
-                                              </small>
-                                            </div>
-                                          </div>
-                                        </td>
-                                        <td class="text-right font-weight-semibold align-middle p-4">$288</td>
-                                        <td class="align-middle p-4"><input type="text" class="form-control text-center" onchange="finalPricecalculate()" id="quantity" placeholder="1"></td>
-                                        <td class="text-right font-weight-semibold align-middle p-4"> 289</td>
-                                        <td class="text-center align-middle px-0"><a href="deleteCart.php?id=<?php echo $id ?>" class="shop-tooltip close float-none text-danger" title="" data-original-title="Remove">×</a></td>
-                                      </tr>
+               <tbody>
+                  <% if (productDetails) { %>
+                    <% let totalPrice = 0; %>
+                    <% productDetails.forEach(product => { %>
+                     
+                        <% totalPrice += product.productPrice; %>
+                     
+                      <tr>
+                        <td class="p-4">
+                           <div class="media align-items-center">
+                             <img src="./images/pro.jpg" class="d-block ui-w-40 ui-bordered mr-4" alt="">
+                             <div class="media-body">
+                               <a href="#" class="d-block text-dark"> <%- product.productName %> </a>
+                               <small>
+                                 <span class="text-muted">Color:</span>
+                                 <span class="ui-product-color ui-product-color-sm align-text-bottom" style="background:#e81e2c;"></span> &nbsp;
+                                 <span class="text-muted">Size: </span> EU 37 &nbsp;
+                                 <span class="text-muted">Ships from: </span> China
+                               </small>
+                             </div>
+                           </div>
+                         </td>
+                         <td class="text-right font-weight-semibold align-middle p-4">$<%- product.productPrice %></td>
+                         <td class="align-middle p-4"><input type="text" class="form-control text-center" readonly value="<%- product.quantity %>" onchange="finalPricecalculate()" id="quantity" placeholder="1"></td>
+                         <td class="text-right font-weight-semibold align-middle p-4"> 289</td>
+                         <td class="text-center align-middle px-0"><a href="deleteCart.php?id=<?php echo $id ?>" class="shop-tooltip close float-none text-danger" title="" data-original-title="Remove">×</a></td>
+                       </tr>
+                                 
+
+
+
+                       <% }); %>
+                         
+                                  
         
                                
                  <script>
                      function finalPricecalculate(){
                          var quantity = document.getElementById("quantity").value;
-                         alert(quantity);
+                        //  alert(quantity);
                      }
                  </script>
                   <!--<tr>-->
@@ -188,7 +200,7 @@ body{
                 <!--  <div class="text-large"><strong>$20</strong></div>-->
                 <!--</div>-->
                 <div class="text-right mt-4" style="margin-left:10px">
-                  <label class=" font-weight-normal m-0"><strong> Total price:- <p id="total_price_sn">$<?php echo $total_price ?></p></strong></label>
+                  <label class=" font-weight-normal m-0"><strong> Total price:- <p id="total_price_sn">$ <%= totalPrice %> </p></strong></label>
                   <div class="text-large"><strong></strong></div>
                 </div>
               </div>
@@ -197,12 +209,15 @@ body{
             <div class="float-right">
                 
               <a href="./product.php"> <button type="button" class="btn btn-lg btn-default md-btn-flat mt-2 mr-3">Back to shopping</button></a>
-              <form action="order-form.php" method="post">
+              <form action="order-form" method="post">
                   <input type="hidden" value="" name="">
                   <input type="hidden" value="" name="">
                    <button type="submit" class="btn btn-lg btn-primary mt-2">Checkout</button>
               </form>
-             
+              <% }else{ %>
+  <h2>no items</h2>
+             <% } %>
+                              
             </div>
         
           </div>

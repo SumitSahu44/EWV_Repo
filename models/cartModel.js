@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 mongoose.connect("mongodb://127.0.0.1:27017/EWV");
 
 const productSchema = new mongoose.Schema({
-    productId: { type: String, required: true },
+    productId: { type: mongoose.Schema.Types.ObjectId, ref: 'product', required: true },
     quantity: { type: Number, required: true, default: 1 },
 });
 

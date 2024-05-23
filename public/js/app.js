@@ -10,8 +10,8 @@ for (var i = 0; i < cartBtns.length; i++) {
          var productId = button.getAttribute('data-product-id');
          
          // Log the product ID
-         console.log("Product ID:", productId);
+        //  console.log("Product ID:", productId);
           // window.location.href="addToCart";
-        let URL = "addToCart/"+productId;
+        let URL = "product/"+productId;
         window.location.href= URL;
     })}

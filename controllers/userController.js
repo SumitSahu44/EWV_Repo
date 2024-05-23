@@ -16,11 +16,13 @@ function userControllers()
         },
         product(req,res)
         {
-            res.render("product")
+            res.render("product",{
+                alertMsg : null
+            })
         },
-        cart(req,res)
+        orderForm(req,res)
         {
-            res.render("cart");
+            res.render("order-form");
         },
         registerLogin(req,res)
         {

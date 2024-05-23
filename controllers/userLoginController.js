@@ -1,6 +1,6 @@
 const userModel = require("../models/userModel")
 const jwt = require('jsonwebtoken')
-const secretKey = "4545s";
+
 async function  userLoginControllers(req,res)
 {
   
@@ -13,9 +13,9 @@ async function  userLoginControllers(req,res)
         
         if (user) {
           //generate jwt token 
-          const token =  jwt.sign({userId:user._id},secretKey,{expiresIn:'1min'})
-         res.cookie("uid", token)
-          // res.status(400).send({"status": "success", "token": token, "_id" : user._id});
+          const token =  jwt.sign({userId:user._id},process.env.json_secret_key,{expiresIn:'5d'})
+          res.cookie('Token', token, { maxAge: 9000000, httpOnly: true });
+        // res.status(400).send({"status": "success", "token": token, "_id" : user._id});
           res.redirect("/product")
           
           // res.send('Successfully logged in');

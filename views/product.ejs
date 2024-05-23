@@ -12,7 +12,8 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/product.css"> 
-
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <style>
     footer{
   background: #05151f;
@@ -155,11 +156,28 @@ footer .footer-child-3 .app-box img{
 
 
 
-
 <div class="container-xl">
   <div class="row">
     <div class="col-md-12">
       <h2>Our Products</h2>
+      
+<% if (messages.alertMsg) { %>
+  <div data-aos="fade-left">
+    <div class="alert alert-success" id="alertMess" style="z-index: 100;" role="alert">
+     <%- messages.alertMsg  %>
+    </div>
+  </div>
+  
+ <script>
+    setTimeout(()=>{
+          const alertMess = document.getElementById('alertMess')
+          alertMess.remove();
+        }, 1000)
+ </script>
+ 
+
+<% } %>
+
       <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="0">
       <!-- Carousel indicators -->
       <ol class="carousel-indicators">
@@ -169,23 +187,27 @@ footer .footer-child-3 .app-box img{
       </ol>   
       <!-- Wrapper for carousel items -->
       <div class="carousel-inner">
-  
+ 
         <div class="item carousel-item active">
           <div class="row">
-            <div class="col-sm-3">
-              <div class="thumb-wrapper">
-                <div class="img-box">
-                 <img src="./images/pro.jpg" class="img-fluid" alt="">
-               </div>
-            <div class="thumb-content">
-             <h4>Product Name</h4>               
-             <h6>Active incredients: </h6>
-                 <p class="item-price"> <b>$369.00</b></p>
-                 <a class="btn btn-primary add-to-cart-btn" data-product-id="1">Add to Cart</a>
-               </div>       
-             </div>
-           </div>
-           <div class="col-sm-3">
+            <% allProducts.forEach(product => { %>
+                    <div class="col-sm-3">
+                        <div class="thumb-wrapper">
+                          <div class="img-box">
+                          <img src="./images/<%- product.productImg %>" class="img-fluid" alt="">
+                        </div>
+                      <div class="thumb-content">
+                      <h4><%- product.productName %></h4>               
+                      <h6>Active incredients: </h6>
+                          <p class="item-price"> <b><%- product.productDescription %></b></p>
+                          <p class="item-price"> <b><%- product.productPrice %></b></p>
+                          <a class="btn btn-primary add-to-cart-btn" data-product-id="<%- product._id %>">Add to Cart</a>
+                        </div>       
+                      </div>
+                    </div>
+           <% }); %>
+            
+           <!-- <div class="col-sm-3">
               <div class="thumb-wrapper">
                 <div class="img-box">
                      <img src="./images/pro.jpg" class="img-fluid" alt="">  
@@ -220,7 +242,7 @@ footer .footer-child-3 .app-box img{
                   <h4>Product Name</h4>                 
                   <h6>Active incredients: </h6>
                   <p class="item-price"> <b>$369.00</b></p>
-                  <a href="#" class="btn btn-primary">Add to Cart</a>
+                  <a class="btn btn-primary add-to-cart-btn" data-product-id="4">Add to Cart</a>
                 </div>           
               </div>
             </div>            
@@ -281,7 +303,7 @@ footer .footer-child-3 .app-box img{
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
       <!-- Carousel controls -->
       <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
@@ -357,5 +379,8 @@ footer .footer-child-3 .app-box img{
     </div>
   </footer>
   <script src="js/app.js"></script>
+  <script>
+    AOS.init();
+  </script>
 </body>
 </html>                                   

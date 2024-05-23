@@ -1,31 +1,4 @@
-
-<?php
-include 'config.php';
- session_start();
- 
- 
- if(!isset($_SESSION['pid']))
- {
-      header("Location: ./product.php");
- }else{
-
-           
-            //   $product_name = $_POST['product_name'];
-            //   $product_price = $_POST['product_price'];
-               $product_qty = $_POST['product_qty'];
-           
-  
-     $pid = $_SESSION['pid'];
-     $_SESSION['p_qty'] = $product_qty;
-     
-     $select = "SELECT * FROM `products` WHERE `pid` = '$pid'";
-     $result = mysqli_query($con,$select);
-     $data = mysqli_fetch_array($result);
-     ?>
-     
-     
-     
-     <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
