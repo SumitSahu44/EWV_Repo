@@ -29,6 +29,7 @@ app.use(flash());
 app.use("", routePath);
 
 // Set template engine
+
 app.set('view engine', 'ejs');
 
 // Start the server

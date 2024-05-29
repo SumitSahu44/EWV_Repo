@@ -72,7 +72,7 @@ body{
               <a class="nav-link" href="product">Products</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="cart"><i class="fa fa-shopping-cart" aria-hidden="true"><?php echo $cartItems ?></i></a>
+              <a class="nav-link" href="cart"><i class="fa fa-shopping-cart" aria-hidden="true"><%- cartquantity? cartquantity: '' %></i></a>
             </li>
           </ul>
         </div>
@@ -82,157 +82,161 @@ body{
     
    
     
+    <% if(messages.cartMessage){ %>
+         <h2><%- messages.cartMessage  %></h2>
+    <% }else{ %>
+      <div class="container px-8 my-5 clearfix">
+        <!-- Shopping cart table -->
+        <div class="card">
+            <div class="card-header">
+                <h2>Shopping Cart</h2>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table table-bordered m-0">
+                    <thead>
+                      <tr>
+                        <!-- Set columns width -->
+                        <th class="text-center py-3 px-4" style="min-width: 400px;">Product Name &amp; Details</th>
+                        <th class="text-right py-3 px-4" style="width: 100px;">Price</th>
+                        <th class="text-center py-3 px-4" style="width: 120px;">Quantity</th>
+                        <th class="text-right py-3 px-4" style="width: 100px;">Total</th>
+                        <th class="text-center align-middle py-3 px-0" style="width: 40px;"><a href="#" class="shop-tooltip float-none text-light" title="" data-original-title="Clear cart"><i class="ino ion-md-trash"></i></a></th>
+                      </tr>
+                    </thead>
+                   <tbody>
+                   
+                      <!-- Display the type of 'c' and 'p' before parsing -->
+                      <% let totalPrice = 0 %>
+                    <% for (let i = 0; i < CartProducts.length; i++) { %>
+                      <% for (let j = 0; j < productDetails.length; j++) { %>
     
-<div class="container px-8 my-5 clearfix">
-    <!-- Shopping cart table -->
-    <div class="card">
-        <div class="card-header">
-            <h2>Shopping Cart</h2>
-        </div>
-        <div class="card-body">
-            <div class="table-responsive">
-              <table class="table table-bordered m-0">
-                <thead>
-                  <tr>
-                    <!-- Set columns width -->
-                    <th class="text-center py-3 px-4" style="min-width: 400px;">Product Name &amp; Details</th>
-                    <th class="text-right py-3 px-4" style="width: 100px;">Price</th>
-                    <th class="text-center py-3 px-4" style="width: 120px;">Quantity</th>
-                    <th class="text-right py-3 px-4" style="width: 100px;">Total</th>
-                    <th class="text-center align-middle py-3 px-0" style="width: 40px;"><a href="#" class="shop-tooltip float-none text-light" title="" data-original-title="Clear cart"><i class="ino ion-md-trash"></i></a></th>
-                  </tr>
-                </thead>
-               <tbody>
-               
-                  <!-- Display the type of 'c' and 'p' before parsing -->
-                  <% let totalPrice = 0 %>
-                <% for (let i = 0; i < CartProducts.length; i++) { %>
-                  <% for (let j = 0; j < productDetails.length; j++) { %>
-
-                    <% if (String(CartProducts[i].productId) === String(productDetails[j]._id)) { %>
-                       
-                        <tr>
-                          <td class="p-4">
-                             <div class="media align-items-center">
-                               <img src="./images/pro.jpg" class="d-block ui-w-40 ui-bordered mr-4" alt="">
-                               <div class="media-body">
-                                 <a href="#" class="d-block text-dark"><%- productDetails[j].productName  %></a>
-                                 <small>
-                                   <span class="text-muted">Color:</span>
-                                   <span class="ui-product-color ui-product-color-sm align-text-bottom" style="background:#e81e2c;"></span> &nbsp;
-                                   <span class="text-muted">Size: </span> EU 37 &nbsp;
-                                   <span class="text-muted">Ships from: </span> China
-                                 </small>
-                               </div>
-                             </div>
-                           </td>
-                         <% let total = productDetails[j].productPrice * CartProducts[i].quantity %>
-                           <td class="text-right font-weight-semibold align-middle p-4"><%- productDetails[j].productPrice  %></td>
-                           <td class="align-middle p-4"><input type="text" class="form-control text-center" readonly value="<%- CartProducts[i].quantity  %>" onchange="finalPricecalculate()" id="quantity" placeholder="1"></td>
-                           <td class="text-right font-weight-semibold align-middle p-4"><%- total.toFixed(2) %></td>
-                           <td class="text-center align-middle px-0"><a href="cart/delete/<%- CartProducts[i]._id %>" class="shop-tooltip close float-none text-danger" title="" data-original-title="Remove">×</a></td>
-                         </tr>
-                
-                                 
-                         <% totalPrice = totalPrice + total %>
-
-
-
-                    <% }  %>
-                  <% } %>
-                <% } %>
-                
-       
-             
-                                 
-
-
-
-                          
-        
-                               
-                 <script>
-                     function finalPricecalculate(){
-                         var quantity = document.getElementById("quantity").value;
-                        //  alert(quantity);
-                     }
-                 </script>
-                  <!--<tr>-->
-                  <!--  <td class="p-4">-->
-                  <!--    <div class="media align-items-center">-->
-                  <!--      <img src="https://bootdey.com/img/Content/avatar/avatar6.png" class="d-block ui-w-40 ui-bordered mr-4" alt="">-->
-                  <!--      <div class="media-body">-->
-                  <!--        <a href="#" class="d-block text-dark">Product 2</a>-->
-                  <!--        <small>-->
-                  <!--          <span class="text-muted">Color:</span>-->
-                  <!--          <span class="ui-product-color ui-product-color-sm align-text-bottom" style="background:#000;"></span> &nbsp;-->
-                  <!--          <span class="text-muted">Storage: </span> 32GB &nbsp;-->
-                  <!--          <span class="text-muted">Warranty: </span> Standard - 1 year &nbsp;-->
-                  <!--          <span class="text-muted">Ships from: </span> China-->
-                  <!--        </small>-->
-                  <!--      </div>-->
-                  <!--    </div>-->
-                  <!--  </td>-->
-                  <!--  <td class="text-right font-weight-semibold align-middle p-4">$1049.00</td>-->
-                  <!--  <td class="align-middle p-4"><input type="text" class="form-control text-center" value="1"></td>-->
-                  <!--  <td class="text-right font-weight-semibold align-middle p-4">$1049.00</td>-->
-                  <!--  <td class="text-center align-middle px-0"><a href="#" class="shop-tooltip close float-none text-danger" title="" data-original-title="Remove">×</a></td>-->
-                  <!--</tr>-->
-        
-                  <!--<tr>-->
-                  <!--  <td class="p-4">-->
-                  <!--    <div class="media align-items-center">-->
-                  <!--      <img src="https://bootdey.com/img/Content/avatar/avatar2.png" class="d-block ui-w-40 ui-bordered mr-4" alt="">-->
-                  <!--      <div class="media-body">-->
-                  <!--        <a href="#" class="d-block text-dark">Product 3</a>-->
-                  <!--        <small>-->
-                  <!--          <span class="text-muted">Ships from: </span> Germany-->
-                  <!--        </small>-->
-                  <!--      </div>-->
-                  <!--    </div>-->
-                  <!--  </td>-->
-                  <!--  <td class="text-right font-weight-semibold align-middle p-4">$20.55</td>-->
-                  <!--  <td class="align-middle p-4"><input type="text" class="form-control text-center" value="1"></td>-->
-                  <!--  <td class="text-right font-weight-semibold align-middle p-4">$20.55</td>-->
-                  <!--  <td class="text-center align-middle px-0"><a href="#" class="shop-tooltip close float-none text-danger" title="" data-original-title="Remove">×</a></td>-->
-                  <!--</tr>-->
-        
-                </tbody>
-              </table>
-            </div>
-            <!-- / Shopping cart table -->
-        
-            <div class="d-flex flex-wrap justify-content-between align-items-center pb-4">
-              <div class="mt-4">
-                <label class="text-muted font-weight-normal">Promocode</label>
-                <input type="text" placeholder="ABC" class="form-control">
-              </div>
-              <div class="d-flex">
-                <!--<div class="text-right mt-4 mr-5">-->
-                <!--  <label class="text-muted font-weight-normal m-0">Discount</label>-->
-                <!--  <div class="text-large"><strong>$20</strong></div>-->
-                <!--</div>-->
-                <div class="text-right mt-4" style="margin-left:10px">
-                  <label class=" font-weight-normal m-0"><strong> Total price:- <p id="total_price_sn">$<%- totalPrice %> </p></strong></label>
-                  <div class="text-large"><strong></strong></div>
+                        <% if (String(CartProducts[i].productId) === String(productDetails[j]._id)) { %>
+                           
+                            <tr>
+                              <td class="p-4">
+                                 <div class="media align-items-center">
+                                   <img src="./images/pro.jpg" class="d-block ui-w-40 ui-bordered mr-4" alt="">
+                                   <div class="media-body">
+                                     <a href="#" class="d-block text-dark"><%- productDetails[j].productName  %></a>
+                                     <small>
+                                       <span class="text-muted">Color:</span>
+                                       <span class="ui-product-color ui-product-color-sm align-text-bottom" style="background:#e81e2c;"></span> &nbsp;
+                                       <span class="text-muted">Size: </span> EU 37 &nbsp;
+                                       <span class="text-muted">Ships from: </span> China
+                                     </small>
+                                   </div>
+                                 </div>
+                               </td>
+                             <% let total = productDetails[j].productPrice * CartProducts[i].quantity %>
+                               <td class="text-right font-weight-semibold align-middle p-4"><%- productDetails[j].productPrice  %></td>
+                               <td class="align-middle p-4"><input type="text" class="form-control text-center" readonly value="<%- CartProducts[i].quantity  %>" onchange="finalPricecalculate()" id="quantity" placeholder="1"></td>
+                               <td class="text-right font-weight-semibold align-middle p-4"><%- total.toFixed(2) %></td>
+                               <td class="text-center align-middle px-0"><a href="cart/delete/<%- CartProducts[i]._id %>" class="shop-tooltip close float-none text-danger" title="" data-original-title="Remove">×</a></td>
+                             </tr>
+                    
+                                     
+                             <% totalPrice = totalPrice + total %>
+    
+    
+    
+                        <% }  %>
+                      <% } %>
+                    <% } %>
+                    
+           
+                 
+                                     
+    
+    
+    
+                              
+            
+                                   
+                     <script>
+                         function finalPricecalculate(){
+                             var quantity = document.getElementById("quantity").value;
+                            //  alert(quantity);
+                         }
+                     </script>
+                      <!--<tr>-->
+                      <!--  <td class="p-4">-->
+                      <!--    <div class="media align-items-center">-->
+                      <!--      <img src="https://bootdey.com/img/Content/avatar/avatar6.png" class="d-block ui-w-40 ui-bordered mr-4" alt="">-->
+                      <!--      <div class="media-body">-->
+                      <!--        <a href="#" class="d-block text-dark">Product 2</a>-->
+                      <!--        <small>-->
+                      <!--          <span class="text-muted">Color:</span>-->
+                      <!--          <span class="ui-product-color ui-product-color-sm align-text-bottom" style="background:#000;"></span> &nbsp;-->
+                      <!--          <span class="text-muted">Storage: </span> 32GB &nbsp;-->
+                      <!--          <span class="text-muted">Warranty: </span> Standard - 1 year &nbsp;-->
+                      <!--          <span class="text-muted">Ships from: </span> China-->
+                      <!--        </small>-->
+                      <!--      </div>-->
+                      <!--    </div>-->
+                      <!--  </td>-->
+                      <!--  <td class="text-right font-weight-semibold align-middle p-4">$1049.00</td>-->
+                      <!--  <td class="align-middle p-4"><input type="text" class="form-control text-center" value="1"></td>-->
+                      <!--  <td class="text-right font-weight-semibold align-middle p-4">$1049.00</td>-->
+                      <!--  <td class="text-center align-middle px-0"><a href="#" class="shop-tooltip close float-none text-danger" title="" data-original-title="Remove">×</a></td>-->
+                      <!--</tr>-->
+            
+                      <!--<tr>-->
+                      <!--  <td class="p-4">-->
+                      <!--    <div class="media align-items-center">-->
+                      <!--      <img src="https://bootdey.com/img/Content/avatar/avatar2.png" class="d-block ui-w-40 ui-bordered mr-4" alt="">-->
+                      <!--      <div class="media-body">-->
+                      <!--        <a href="#" class="d-block text-dark">Product 3</a>-->
+                      <!--        <small>-->
+                      <!--          <span class="text-muted">Ships from: </span> Germany-->
+                      <!--        </small>-->
+                      <!--      </div>-->
+                      <!--    </div>-->
+                      <!--  </td>-->
+                      <!--  <td class="text-right font-weight-semibold align-middle p-4">$20.55</td>-->
+                      <!--  <td class="align-middle p-4"><input type="text" class="form-control text-center" value="1"></td>-->
+                      <!--  <td class="text-right font-weight-semibold align-middle p-4">$20.55</td>-->
+                      <!--  <td class="text-center align-middle px-0"><a href="#" class="shop-tooltip close float-none text-danger" title="" data-original-title="Remove">×</a></td>-->
+                      <!--</tr>-->
+            
+                    </tbody>
+                  </table>
                 </div>
+                <!-- / Shopping cart table -->
+            
+                <div class="d-flex flex-wrap justify-content-between align-items-center pb-4">
+                  <div class="mt-4">
+                    <label class="text-muted font-weight-normal">Promocode</label>
+                    <input type="text" placeholder="ABC" class="form-control">
+                  </div>
+                  <div class="d-flex">
+                    <!--<div class="text-right mt-4 mr-5">-->
+                    <!--  <label class="text-muted font-weight-normal m-0">Discount</label>-->
+                    <!--  <div class="text-large"><strong>$20</strong></div>-->
+                    <!--</div>-->
+                    <div class="text-right mt-4" style="margin-left:10px">
+                      <label class=" font-weight-normal m-0"><strong> Total price:- <p id="total_price_sn">$<%- totalPrice %> </p></strong></label>
+                      <div class="text-large"><strong></strong></div>
+                    </div>
+                  </div>
+                </div>
+            
+                <div class="float-right">
+                    
+                  <a href="./product.php"> <button type="button" class="btn btn-lg btn-default md-btn-flat mt-2 mr-3">Back to shopping</button></a>
+                  <form action="order-form" method="post">
+                      <input type="hidden" value="" name="">
+                      <input type="hidden" value="" name="">
+                       <button type="submit" class="btn btn-lg btn-primary mt-2">Checkout</button>
+                  </form>
+                    
+                </div>
+            
               </div>
-            </div>
-        
-            <div class="float-right">
-                
-              <a href="./product.php"> <button type="button" class="btn btn-lg btn-default md-btn-flat mt-2 mr-3">Back to shopping</button></a>
-              <form action="order-form" method="post">
-                  <input type="hidden" value="" name="">
-                  <input type="hidden" value="" name="">
-                   <button type="submit" class="btn btn-lg btn-primary mt-2">Checkout</button>
-              </form>
-                
-            </div>
-        
           </div>
       </div>
-  </div>
+    
+      <% } %>
 
 </body>
 
