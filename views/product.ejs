@@ -162,8 +162,8 @@ footer .footer-child-3 .app-box img{
       <h2>Our Products</h2>
       
 <% if (messages.alertMsg) { %>
-  <div data-aos="fade-left">
-    <div class="alert alert-success" id="alertMess" style="z-index: 100;" role="alert">
+  <div data-aos="fade-left"  id="alertMess">
+    <div class="alert alert-success" style="z-index: 100;" role="alert">
      <%- messages.alertMsg  %>
     </div>
   </div>
@@ -172,7 +172,7 @@ footer .footer-child-3 .app-box img{
     setTimeout(()=>{
           const alertMess = document.getElementById('alertMess')
           alertMess.remove();
-        }, 1000)
+        }, 2000)
  </script>
  
 

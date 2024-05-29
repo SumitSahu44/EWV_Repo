@@ -58,7 +58,7 @@ function cartController() {
           
            let productsId = []
            let productsQty = []
-         
+        //  res.send(carts[0].products) 
             carts[0].products.forEach(product => {
                     productsId.push(product.productId)
                     productsQty.push(product.quantity)
@@ -69,7 +69,7 @@ function cartController() {
          ProductModel.find({ _id : { $in: productsId } })
           .then(products => res.render('cart',{
             productDetails : products,
-            productQty: productsQty,
+            CartProducts:  carts[0].products,
          }))
           .catch(err => res.status(500).json({ error: err.message }));
      
