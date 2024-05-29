@@ -15,6 +15,7 @@ route.get("/product", productController().getAllProducts)
 route.get("/cart", auth, cartController().getAllProducts)
 route.get("/sign-up", userController().registerLogin)
 route.get("/product/:pid", auth, cartController().addProduct)
+route.get("/cart/delete/:cpid", auth, cartController().deleteProductFromCart)
 
 
 

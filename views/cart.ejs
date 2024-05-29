@@ -129,9 +129,9 @@ body{
                            <td class="text-right font-weight-semibold align-middle p-4"><%- productDetails[j].productPrice  %></td>
                            <td class="align-middle p-4"><input type="text" class="form-control text-center" readonly value="<%- CartProducts[i].quantity  %>" onchange="finalPricecalculate()" id="quantity" placeholder="1"></td>
                            <td class="text-right font-weight-semibold align-middle p-4"> 289</td>
-                           <td class="text-center align-middle px-0"><a href="deleteCart.php?id=<?php echo $id ?>" class="shop-tooltip close float-none text-danger" title="" data-original-title="Remove">×</a></td>
+                           <td class="text-center align-middle px-0"><a href="cart/delete/<%- CartProducts[i]._id %>" class="shop-tooltip close float-none text-danger" title="" data-original-title="Remove">×</a></td>
                          </tr>
-                  
+                
                                  
 
 

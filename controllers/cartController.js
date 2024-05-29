@@ -49,11 +49,7 @@ function cartController() {
         },
         async getAllProducts(req,res)
         {
-
-
-           
-                
-                let customerId = req.user._id;
+             let customerId = req.user._id;
             carts = await CartModel.find({customerId}).select("-password")
           
            let productsId = []
@@ -65,7 +61,7 @@ function cartController() {
           });
        
        res.cookie("cartProducts",carts[0].products, { maxAge: 9000000, httpOnly: true })
-    
+     
          ProductModel.find({ _id : { $in: productsId } })
           .then(products => res.render('cart',{
             productDetails : products,
@@ -77,7 +73,21 @@ function cartController() {
 
 
             
+        },
+        async deleteProductFromCart(req,res)
+        {
+            const customerId = req.user._id
+            const productId = req.params.cpid
+          
+            const result = await CartModel.updateOne(
+                { customerId: customerId },
+                { $pull: { products: { _id: productId } } }
+            );
+    
+           res.redirect('../../cart')
+
         }
+
       }
  
 }
