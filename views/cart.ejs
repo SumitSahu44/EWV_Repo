@@ -108,11 +108,20 @@ body{
                    
                       <!-- Display the type of 'c' and 'p' before parsing -->
                       <% let totalPrice = 0 %>
+                      <% let completeCart = [] %>
                     <% for (let i = 0; i < CartProducts.length; i++) { %>
                       <% for (let j = 0; j < productDetails.length; j++) { %>
     
                         <% if (String(CartProducts[i].productId) === String(productDetails[j]._id)) { %>
                            
+                          <% let item = { 
+                                  productId: CartProducts[i].productId,
+                                  productName: productDetails[j].productName,
+                                  productQty: CartProducts[i].quantity,
+                                  productPrice: productDetails[j].productPrice
+                                
+                           } %>
+                           <% completeCart.push(item) %>
                             <tr>
                               <td class="p-4">
                                  <div class="media align-items-center">
@@ -215,18 +224,21 @@ body{
                     <!--  <div class="text-large"><strong>$20</strong></div>-->
                     <!--</div>-->
                     <div class="text-right mt-4" style="margin-left:10px">
-                      <label class=" font-weight-normal m-0"><strong> Total price:- <p id="total_price_sn">$<%- totalPrice %> </p></strong></label>
+                      <label class=" font-weight-normal m-0"><strong> Total price:- <p id="total_price_sn">$<%- totalPrice.toFixed(2) %> </p></strong></label>
+          
                       <div class="text-large"><strong></strong></div>
                     </div>
                   </div>
                 </div>
-            
+                <%   completeCart = JSON.stringify(completeCart)%>
+
                 <div class="float-right">
-                    
+                   
                   <a href="./product.php"> <button type="button" class="btn btn-lg btn-default md-btn-flat mt-2 mr-3">Back to shopping</button></a>
                   <form action="order-form" method="post">
-                      <input type="hidden" value="" name="">
-                      <input type="hidden" value="" name="">
+                      <input type="hidden" value="<%- cartquantity %>" name="productQuantity">
+                      <input type="hidden" value="<%- totalPrice  %>" name="productPrice">
+                      <input type="hidden" value="<%= completeCart  %>" name="completeCart">
                        <button type="submit" class="btn btn-lg btn-primary mt-2">Checkout</button>
                   </form>
                     

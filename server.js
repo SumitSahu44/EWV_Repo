@@ -6,7 +6,7 @@ const routePath = require("./routes/user/userAllRoutes");
 const cookieParser = require('cookie-parser')
 const session = require('express-session');
 const flash = require('express-flash');
- 
+
 // Middleware to serve static files
 app.use(express.static('./public'));
 
@@ -14,7 +14,9 @@ app.use(express.static('./public'));
 // // Middleware to parse JSON data
 // app.use(express.json());
 // // Middleware to parse URL-encoded data
+
 app.use(express.urlencoded({ extended: false }));
+
 app.use(cookieParser())
 //  session config 
 app.use(session({

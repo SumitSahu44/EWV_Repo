@@ -22,7 +22,15 @@ function userControllers()
         },
         orderForm(req,res)
         {
-            res.render("order-form");
+            let productQuantity = req.body.productQuantity;
+            let productPrice = req.body.productPrice;
+            const completeCart = JSON.parse(req.body.completeCart);
+            //  res.send(completeCart[0])
+            res.render("order-form",{
+                productQuantity,
+                productPrice,
+                completeCart
+            });
         },
         registerLogin(req,res)
         {

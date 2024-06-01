@@ -6,6 +6,8 @@ const userLoginController = require("../../controllers/userLoginController")
 const cartController = require("../../controllers/cartController")
 const productController = require("../../controllers/productController")
 const auth = require('../../controllers/auth.js')
+const confirmOrder = require('../../controllers/confirmOrder.js')
+
 
 route.get("/", userController().index)
 route.get("/about", userController().about)
@@ -21,5 +23,6 @@ route.get("/cart/delete/:cpid", auth, cartController().deleteProductFromCart)
 
 route.post("/register", userRegisterController);
 route.post("/login", userLoginController);
-route.post("/order-form", userController().orderForm)
+route.post("/order-form",auth, userController().orderForm)
+route.post("/confirmOrder", auth, confirmOrder)
 module.exports = route;
