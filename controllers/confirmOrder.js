@@ -1,8 +1,8 @@
-const confirmOrderModel = require('../models/confirmOrderModel');
+
 const nodemailer = require("nodemailer");
 const cartModel = require("../models/cartModel")
 const productModel = require("../models/productModel")
-const orderModel = require("../models/confirmOrderModel")
+const confirmOrderModel = require('../models/confirmOrderModel');
 async function confirmOrder(req,res)
 {
     let customerId = req.user._id

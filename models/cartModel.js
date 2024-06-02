@@ -1,7 +1,11 @@
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://127.0.0.1:27017/EWV");
-
+mongoose.connect("mongodb+srv://EWV:ewvtestmongodb@cluster0.rtzboh6.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0").then(() => {
+    console.log('Connected to MongoDB');
+})
+.catch((error) => {
+    console.error('Error connecting to MongoDB:', error);
+});
 const productSchema = new mongoose.Schema({
     productId: { type: mongoose.Schema.Types.ObjectId, ref: 'product', required: true },
     quantity: { type: Number, required: true, default: 1 },

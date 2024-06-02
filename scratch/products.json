@@ -1,0 +1,32 @@
+[
+    {
+        "productId": "001",
+        "productName": "Wireless Mouse",
+        "productImg": "pro.jpg",
+        "productPrice": 29.99,
+        "productDescription": "A high precision wireless mouse with ergonomic design."
+    },
+    {
+        "productId": "002",
+        "productName": "Mechanical Keyboard",
+        "productImg": "pro.jpg",
+        "productPrice": 89.99,
+        "productDescription": "A mechanical keyboard with customizable RGB lighting."
+    },
+    {
+        "productId": "003",
+        "productName": "USB-C Hub",
+        "productImg": "pro.jpg",
+        "productPrice": 49.99,
+        "productDescription": "A versatile USB-C hub with multiple ports including HDMI and USB 3.0."
+    },
+    {
+        "productId": "004",
+        "productName": "Noise Cancelling Headphones",
+        "productImg": "pro.jpg",
+        "productPrice": 199.99,
+        "productDescription": "High quality noise cancelling headphones with long battery life."
+    }
+]
+
+
