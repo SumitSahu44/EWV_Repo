@@ -66,18 +66,25 @@ function cartController() {
     
         //    res.cookie("cartProducts",carts[0].products, { maxAge: 9000000, httpOnly: true })
                res.cookie("cartquantity",carts[0].products.length, { maxAge: 9000000, httpOnly: true })
-    
+               if(req.cookies.cartquantity == 0)
+                {
+                    req.flash('cartMessage', 'No any Items');
+                       cartquantity = ''
+                }else{
+                    cartquantity = req.cookies.cartquantity
+                }
              ProductModel.find({ _id : { $in: productsId } })
               .then(products => res.render('cart',{
                 productDetails : products,
                 CartProducts:  carts[0].products,
-                cartquantity: req.cookies.cartquantity
+                cartquantity: cartquantity
              }))
               .catch(err => res.status(500).json({ error: err.message }));
          
     
             } catch (error) {
                 req.flash('cartMessage', 'No any Items');
+                
                  res.render('./cart')
             }
       
@@ -93,12 +100,13 @@ function cartController() {
             );
             carts = await CartModel.find({customerId}).select("-password") 
            if(carts[0].products.length == 0){
+            req.flash('cartMessage', 'No any Items');
                cartquantity = ''
            }else{
               cartquantity = carts[0].products.length
            }
             res.cookie("cartquantity",cartquantity, { maxAge: 9000000, httpOnly: true })
-    
+           
            res.redirect('../../cart')
 
         }

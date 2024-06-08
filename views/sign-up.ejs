@@ -203,6 +203,10 @@ body{
   color: #5b13b9;
   cursor: pointer;
 }
+.valid p{
+  font-size: 14px;
+  padding-bottom: 5px;
+}
 .forms .form-content label:hover{
   text-decoration: underline;
 }
@@ -272,10 +276,11 @@ body{
                 <i class="fas fa-envelope"></i>
                 <input type="text" placeholder="Enter your email" name="email" required>
               </div>
-              <div class="input-box">
+              <div class="input-box" >
                 <i class="fas fa-lock"></i>
                 <input type="password" placeholder="Enter your password"  name="password"  required>
               </div>
+
               <div class="text"><a href="#">Forgot password?</a></div>
               <div class="button input-box">
                 <input type="submit" value="Sumbit" name="signin">
@@ -293,21 +298,36 @@ body{
             <div class="input-boxes">
               <div class="input-box">
                 <i class="fas fa-user"></i>
-                <input type="text" placeholder="Enter your name" name="name" required>
+                <input type="text" oninput="checkUser();"placeholder="Enter your name" id="uname" name="name" required>
               </div>
+
+
+              <div class="valid"><p style="color:red" id="validusername"></p></div>
+
+
               <div class="input-box">
                 <i class="fas fa-envelope"></i>
                 <input type="email" placeholder="Enter your email"  name="email"  required>
               </div>
               <div class="input-box">
                 <i class="fas fa-lock"></i>
-                <input type="password" placeholder="Enter your password" id="password" name="password"  required>
+                <input type="password" oninput="valid();" placeholder="Enter your password" id="password" name="password"  required>
               </div>
+
+
+              <div class="valid"><p style="color:red" id="validmess"></p></div>
+
+
               <div class="input-box">
                 <i class="fas fa-lock"></i>
                 <input type="password" oninput="checkPassword();" placeholder="Re-Enter your password" id="re-enter-password" name="re-pswd"  required>
               </div>
+
+
               <p style="color:red" id="alertmess"></p>
+              <p style="color:red"><%- messages.alertMsg ? messages.alertMsg : ''  %></p>
+              
+
               <div class="button input-box">
                    <input type="" onclick="mess()"  id="block" style="text-align:center;" readonly value="Sumbit" name="sigjnup">
                    <input type="submit" value="Sumbit" id="active" name="signup">
@@ -321,19 +341,64 @@ body{
   </div>
   
   <script>
-  
+
+    // password valid or not [start from here...]
+
+    const validmess=document.getElementById("validmess");
+    validmess.innerHTML="*Password must contain one Uppercase , <br> one Lowercase and one Special character";
+    function clear(){
+      validmess.innerHTML="";
+    }
+    function valid(){
+      clear();
+      const passval=document.getElementById("password").value;
+      const upperCase=/[A-Z]/.test(passval);
+      const lowerCase=/[a-z]/.test(passval);
+      const specialChar=/[!~@#$%^&*(),?":]/.test(passval);
+      const number=/[0123456789]/.test(passval);
+      if(!upperCase){
+        validmess.innerHTML="*Password contain at least one uppercase";
+        return false;
+      }
+      if(!lowerCase){
+        validmess.innerHTML="*Password contain at least one Lowercase";
+        return false;
+      }
+      if(!specialChar){
+        validmess.innerHTML="*Password contain at least one special char";
+      }
+      if(!number){
+        validmess.innerHTML="*Password contain at least one Number";
+      }
+    }
+
+    // [End here....]
+
+// ---------------------------------------------------------------
+
+
+// Fill All field message [Start from here...]
+    
   function mess()
   {
          var alertmess = document.getElementById("alertmess");
-          alertmess.innerHTML = "<b>Fill all fields!</b>";
-             alertmess.style.color="red"
+        alertmess.innerHTML = "<b>Correct all fields!</b>";
+        alertmess.style.color="red"
   }
   
+  // [End here...]
+
+  // ------------------------------------------------------------'
+  
+  // password match message....
+
   function checkPassword()
   {
+    const valid=true;
         var pass = document.getElementById("password").value;
         var repass = document.getElementById("re-enter-password").value;
         var alertmess = document.getElementById("alertmess");
+        
         if(pass == repass)
         {
               alertmess.innerHTML = "<b>Passwords match!</b>";
@@ -347,16 +412,6 @@ body{
              document.getElementById("block").style.display="block";
         }
   }
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   

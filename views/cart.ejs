@@ -14,12 +14,79 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <style>
 *{
     margin:0;
     padding:0;
 }
+
+/* empty cart css  */
+@import url(http://fonts.googleapis.com/css?family=Calibri:400,300,700);
+
+body {
+    background-color: #eee;
+    font-family: 'Calibri', sans-serif !important;
+}
+
+.mt-100{
+   margin-top:100px;
+
+}
+
+
+.card {
+  
+    border: 0;
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease;
+    letter-spacing: .5px;
+    border-radius: 8px;
+    -webkit-box-shadow: 1px 5px 24px 0 rgba(68,102,242,.05);
+    box-shadow: 1px 5px 24px 0 rgba(68,102,242,.05);
+    margin:0px auto 30px auto;
+}
+.carditems {
+ border: 0;
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease;
+    letter-spacing: .5px;
+    border-radius: 8px;
+    -webkit-box-shadow: 1px 5px 24px 0 rgba(68,102,242,.05);
+    box-shadow: 1px 5px 24px 0 rgba(68,102,242,.05);
+    max-width: 500px;
+    margin:0px auto 30px auto;
+}
+
+.card .card-header {
+    background-color: #fff;
+    border-bottom: none;
+    padding: 24px;
+    border-bottom: 1px solid #f6f7fb;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.card-header {
+    border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
+}
+
+
+
+.card .card-body {
+    padding: 30px;
+    /* background-color: transparent; */
+}
+
+.btn-primary, .btn-primary.disabled, .btn-primary:disabled {
+    background-color: #4466f2!important;
+    border-color: #4466f2!important;
+}
+/* empty cart css  */
+
 body{
     /*margin-top:20px;*/
     background:#eee;
@@ -32,6 +99,7 @@ body{
 .card{
     box-shadow: 0 1px 15px 1px rgba(52,40,104,.08);    
 }
+
 
 .ui-product-color {
     display: inline-block;
@@ -83,7 +151,33 @@ body{
    
     
     <% if(messages.cartMessage){ %>
-         <h2><%- messages.cartMessage  %></h2>
+      <div class="container-fluid  mt-100">
+        <div class="row">
+        
+         <div class="col-md-12">
+         
+             <div class="card" style="max-width:500px">
+           <!-- <div class="card-header">
+           <h5>Cart</h5>
+           </div> -->
+           <div class="card-body cart">
+               <div class="col-sm-12 empty-cart-cls text-center">
+                 <img src="https://i.imgur.com/dCdflKN.png" width="130" height="130" class="img-fluid mb-4 mr-3">
+                 <h3><strong>Your Cart is Empty</strong></h3>
+                 <h4>Add something to make me happy :)</h4>
+                 <a href="/product" class="btn btn-primary cart-btn-transform m-3" data-abc="true">continue shopping</a>
+                 
+               
+               </div>
+           </div>
+       </div>
+           
+         
+         </div>
+        
+        </div>
+       
+       </div>
     <% }else{ %>
       <div class="container px-8 my-5 clearfix">
         <!-- Shopping cart table -->
@@ -168,50 +262,12 @@ body{
                             //  alert(quantity);
                          }
                      </script>
-                      <!--<tr>-->
-                      <!--  <td class="p-4">-->
-                      <!--    <div class="media align-items-center">-->
-                      <!--      <img src="https://bootdey.com/img/Content/avatar/avatar6.png" class="d-block ui-w-40 ui-bordered mr-4" alt="">-->
-                      <!--      <div class="media-body">-->
-                      <!--        <a href="#" class="d-block text-dark">Product 2</a>-->
-                      <!--        <small>-->
-                      <!--          <span class="text-muted">Color:</span>-->
-                      <!--          <span class="ui-product-color ui-product-color-sm align-text-bottom" style="background:#000;"></span> &nbsp;-->
-                      <!--          <span class="text-muted">Storage: </span> 32GB &nbsp;-->
-                      <!--          <span class="text-muted">Warranty: </span> Standard - 1 year &nbsp;-->
-                      <!--          <span class="text-muted">Ships from: </span> China-->
-                      <!--        </small>-->
-                      <!--      </div>-->
-                      <!--    </div>-->
-                      <!--  </td>-->
-                      <!--  <td class="text-right font-weight-semibold align-middle p-4">$1049.00</td>-->
-                      <!--  <td class="align-middle p-4"><input type="text" class="form-control text-center" value="1"></td>-->
-                      <!--  <td class="text-right font-weight-semibold align-middle p-4">$1049.00</td>-->
-                      <!--  <td class="text-center align-middle px-0"><a href="#" class="shop-tooltip close float-none text-danger" title="" data-original-title="Remove">×</a></td>-->
-                      <!--</tr>-->
-            
-                      <!--<tr>-->
-                      <!--  <td class="p-4">-->
-                      <!--    <div class="media align-items-center">-->
-                      <!--      <img src="https://bootdey.com/img/Content/avatar/avatar2.png" class="d-block ui-w-40 ui-bordered mr-4" alt="">-->
-                      <!--      <div class="media-body">-->
-                      <!--        <a href="#" class="d-block text-dark">Product 3</a>-->
-                      <!--        <small>-->
-                      <!--          <span class="text-muted">Ships from: </span> Germany-->
-                      <!--        </small>-->
-                      <!--      </div>-->
-                      <!--    </div>-->
-                      <!--  </td>-->
-                      <!--  <td class="text-right font-weight-semibold align-middle p-4">$20.55</td>-->
-                      <!--  <td class="align-middle p-4"><input type="text" class="form-control text-center" value="1"></td>-->
-                      <!--  <td class="text-right font-weight-semibold align-middle p-4">$20.55</td>-->
-                      <!--  <td class="text-center align-middle px-0"><a href="#" class="shop-tooltip close float-none text-danger" title="" data-original-title="Remove">×</a></td>-->
-                      <!--</tr>-->
+                      
             
                     </tbody>
                   </table>
                 </div>
-                <!-- / Shopping cart table -->
+                
             
                 <div class="d-flex flex-wrap justify-content-between align-items-center pb-4">
                   <div class="mt-4">

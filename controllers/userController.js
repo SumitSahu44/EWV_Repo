@@ -4,7 +4,10 @@ function userControllers()
        
         index(req,res)
         {
-            res.render("index");
+            res.render("index", {
+                cartquantity: req.cookies.cartquantity
+               
+            });
         },
         about(req,res)
         {
@@ -32,10 +35,18 @@ function userControllers()
                 completeCart
             });
         },
+        orderConfirm(req,res)
+        {
+          res.render('orderConfirm',{
+            cartquantity: req.cookies.cartquantity
+           
+        })
+        },
         registerLogin(req,res)
         {
             res.render("sign-up",{
-                message : null
+                message : null,
+              
             })
         }
     

@@ -107,8 +107,17 @@ async function confirmOrder(req,res)
                         // text: `${message}`, // plain text body
                     });
 
+                    // delet cart data 
+                     const deleteCart = await cartModel.deleteOne({customerId:customerId})
 
-                    res.send("Order done")
+              
+
+            if(!deleteCart)
+              {
+                    res.send("Cart Not Delete")
+              }
+              res.clearCookie('cartquantity');
+                 res.redirect('orderConfirm');
                     // Message sent: <d786aa62-4e0a-070a-47ed-0b0666549519@ethereal.email>
                     }
 

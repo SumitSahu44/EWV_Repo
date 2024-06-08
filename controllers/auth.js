@@ -8,14 +8,16 @@ async function auth(req,res,next)
         try {
             let token = req.cookies.Token;
             const userId = jwt.verify(token, process.env.json_secret_key).userId
-        
+          
             let user = await userModel.findById(userId).select("-password");
+            // res.json(user)
             req.user =  user
-        
+            // res.cookie("cartquantity",user.products.length, { maxAge: 9000000, httpOnly: true })
+                    
             next()
        
         } catch (error) {
-            res.redirect('../sign-up')
+            res.redirect('../sssign-up')
         }
 
     }else{
