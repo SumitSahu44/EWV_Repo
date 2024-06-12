@@ -36,9 +36,9 @@ async function  userRegisterControllers(req,res)
         
           
     } catch (error) {
-      res.send(error.message)
+
       res.render('sign-up', { 
-         message: 'Email id is already exists,nnb Login HERE!',
+         message: 'Email id is already exists, Login HERE!',
          });
     }
   
