@@ -19,12 +19,16 @@ async function  userLoginControllers(req,res)
         // res.status(400).send({"status": "success", "token": token, "_id" : user._id});
         const customerId = user._id
         let cart = await CartModel.findOne({ customerId });
-
-        res.cookie("cartquantity",cart.products.length, { maxAge: 9000000, httpOnly: true })
-                    
-    
-       
-        res.redirect("/product")
+           
+            if(!cart)
+              {
+                res.cookie("cartquantity",0, { maxAge: 9000000, httpOnly: true })
+                res.redirect("/product")
+              }else{
+                res.cookie("cartquantity",cart.products.length, { maxAge: 9000000, httpOnly: true })
+                res.redirect("/product")
+              }
+     
           
           // res.send('Successfully logged in');
         } else {
