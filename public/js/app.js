@@ -15,3 +15,6 @@ for (var i = 0; i < cartBtns.length; i++) {
         let URL = "product/"+productId;
         window.location.href= URL;
     })}
+
+
+    
