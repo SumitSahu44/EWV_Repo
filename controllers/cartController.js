@@ -50,6 +50,7 @@ function cartController() {
     
     
         },
+        // get all products 
         async getAllProducts(req,res)
         {
             try {
