@@ -8,7 +8,7 @@ const productController = require("../../controllers/productController")
 const auth = require('../../controllers/auth.js')
 const confirmOrder = require('../../controllers/confirmOrder.js')
 
-
+// get routes 
 route.get("/", userController().index)
 route.get("/about", userController().about)
 route.get("/contact", userController().contact)
