@@ -21,7 +21,7 @@ route.get("/product/:pid", auth, cartController().addProduct)
 route.get("/cart/delete/:cpid", auth, cartController().deleteProductFromCart)
 
 
-
+// post routes 
 route.post("/register", userRegisterController);
 route.post("/login", userLoginController);
 route.post("/order-form",auth, userController().orderForm)
