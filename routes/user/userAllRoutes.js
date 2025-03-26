@@ -14,7 +14,7 @@ route.get("/", userController().index)
 route.get("/about", userController().about)
 route.get("/contact", userController().contact)
 
-route.get("/product", productController().getAllProducts)
+route.get("/product", productController().getAllProduct)
 route.get("/cart", auth, cartController().getAllProducts)
 route.get("/sign-up", userController().registerLogin)
 route.get("/orderConfirm", userController().orderConfirm)
