@@ -26,4 +26,5 @@ route.post("/register", userRegisterController);
 route.post("/login", userLoginController);
 route.post("/order-form",auth, userController().orderForm)
 route.post("/confirmOrder", auth, confirmOrder)
+
 module.exports = route;
